@@ -1,0 +1,14 @@
+tokens.json
+.env
+.env.example
+__pycache__
+*.pyc
+.git
+.gitignore
+.venv
+venv
+data
+proxy.py
+README.md
+CLAUDE.md
+.claude

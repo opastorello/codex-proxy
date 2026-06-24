@@ -1,0 +1,17 @@
+# Secrets — NEVER commit (contains live OAuth access/refresh tokens)
+tokens.json
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Claude Code (local config)
+.claude/settings.local.json
+
+# OS / editor
+.DS_Store
+Thumbs.db

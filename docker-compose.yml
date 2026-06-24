@@ -1,0 +1,22 @@
+services:
+  codex-proxy:
+    build: .
+    ports:
+      - "${PROXY_PORT:-5001}:5001"
+      - "1455:1455"          # OAuth callback (first-run login)
+    volumes:
+      - codex-data:/app/data  # persists tokens.json across restarts
+    environment:
+      - TOKEN_FILE=/app/data/tokens.json
+      - PROXY_PORT=5001
+      - PROXY_API_KEY=${PROXY_API_KEY:-}
+      - CODEX_MODEL=${CODEX_MODEL:-gpt-5.4-mini}
+      - CODEX_MODELS=${CODEX_MODELS:-}
+      - CODEX_REASONING_EFFORT=${CODEX_REASONING_EFFORT:-medium}
+      - CODEX_REASONING_SUMMARY=${CODEX_REASONING_SUMMARY:-auto}
+      - BACKEND_TIMEOUT=${BACKEND_TIMEOUT:-600}
+      - PROXY_DEBUG_EVENTS=${PROXY_DEBUG_EVENTS:-}
+    restart: unless-stopped
+
+volumes:
+  codex-data:
